@@ -11,8 +11,8 @@ const Bootcamp = conexion.define('bootcamps',{
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
-            min: 5,
-            max: 10
+            min: 10,
+            max: 20
         }
     },
     description: {
