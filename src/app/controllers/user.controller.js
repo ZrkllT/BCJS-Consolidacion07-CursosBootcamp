@@ -24,7 +24,7 @@ exports.findUserById = async (idUsuario) =>{
 
     const usuarioBootcamp = await User.findByPk(idUsuario,{
         include: [{
-            model: User,
+            model: Bootcamp,
             as: 'bootcamps',
             attributes: ['title'],
             through:{
@@ -32,15 +32,37 @@ exports.findUserById = async (idUsuario) =>{
             }
         }]
     })
-
     return usuarioBootcamp
 }
+/* findAll */
+exports.findUserAll = async () =>{
+    const usuarioBootcamp = await User.findAll({
+        attributes: ['firstName','lastName'],
+        include: [{
+            model: Bootcamp,
+            as: 'bootcamps',
+            attributes: ['title'],
+            through:{
+                attributes: []//['user_id','bootcamp_id']
+            }
+        }]
+    })
+    return usuarioBootcamp
+}
+/* updateUserById */
+exports.updateUserById = async (idUsuario,updUsuario) =>{
+    const usuarioBuscado = await User.findByPk(idUsuario)
+    if(!usuarioBuscado){
+        console.log(`El Usuario ${usuarioBuscado} no encontrado`)
+        return null
+    }
 
+    await User.update(updUsuario,{where: {id: idUsuario}})
+}
 
 /*
 • Crear y guardar usuarios llamado createUser.
 • Obtener los Bootcamp de un usuario llamado findUserById.
-
 • Obtener todos los Usuarios incluyendo, los Bootcamp llamado findAll.
 • Actualizar usuario por Id llamado updateUserById.
 • Eliminar un usuario por Id llamado deleteUserById.
