@@ -1,18 +1,18 @@
-const conextion = require('./../app/config/db.config.js')
-const { DataTypes } = require('sequelize')
+const conexion = require('./../config/db.config.js')
+const Sequelize = require('sequelize')
 
 
 const User = conexion.define('users',{
     firstName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     },
     lastName: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     },
     email: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         unique: true,
         allowNull: false,
         validate: {

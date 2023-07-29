@@ -1,14 +1,14 @@
-const conextion = require('./../app/config/db.config.js')
-const { DataTypes } = require('sequelize')
+const conexion = require('./../config/db.config.js')
+const Sequelize = require('sequelize')
 
 
 const Bootcamp = conexion.define('bootcamps',{
     title: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     },
     cue: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
             min: 5,
@@ -16,7 +16,7 @@ const Bootcamp = conexion.define('bootcamps',{
         }
     },
     description: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: false
     }
 })

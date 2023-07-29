@@ -1,4 +1,4 @@
-const conexion = require('./app/config/conexion.config.js')
+const conexion = require('./../config/db.config.js')
 
 const db = {
     conexion: conexion,
@@ -6,13 +6,13 @@ const db = {
     bootcamp: require('./bootcamp.model.js')
 }
 
-db.users.belongsToMany(db.bootcamps,{
+db.user.belongsToMany(db.bootcamp,{
     through: 'user_bootcamp',
     as: 'bootcamps',
     foreignKey: 'user_id'
 })
 
-db.bootcamps.belongsToMany(db.users,{
+db.bootcamp.belongsToMany(db.user,{
     through: 'user_bootcamp',
     as: 'users',
     foreignKey: 'bootcamp_id'
