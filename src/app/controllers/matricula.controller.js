@@ -17,21 +17,3 @@ exports.matricularUsuario = async (idUsuario, idCurso) =>{
     console.log(`Agregado el usuario id=${idUsuario} al bootcamp con id=${idCurso}`)
     return existeCurso
 }
-
-/*
-exports.agregarParticipante = async (idCurso, idParticipante) => {
-    const curso = await Curso.findByPk(idCurso)
-    if(!curso) { // Validación para verificar existencia del curso
-        console.log("Curso no encontrado "+idCurso);
-        return null
-    }
-    const participante = await Participante.findByPk(idParticipante)
-    if(!participante) { //Validación para verificar la existencia del participante
-        console.log("Participante no encontrado "+idParticipante);
-        return null
-    }
-    await curso.addParticipante(participante)
-    console.log(`Participante ${idParticipante} agregado al curso ${idCurso}`);
-    return curso;
-}
-*/
