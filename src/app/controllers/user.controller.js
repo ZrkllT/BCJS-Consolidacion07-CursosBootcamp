@@ -22,6 +22,7 @@ exports.findUserById = async (idUsuario) =>{
     }
 
     const usuarioBootcamp = await User.findByPk(idUsuario,{
+        attributes: ['firstName','lastName','email'],
         include: [{
             model: Bootcamp,
             as: 'bootcamps',
