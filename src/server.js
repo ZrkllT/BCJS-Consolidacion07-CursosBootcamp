@@ -28,13 +28,23 @@ const crearMatricula = async () =>{
 
 const consultasUser = async () =>{
     const consulta_1 = await userController.findUserById(1)
-    //console.log(JSON.stringify(consulta_1, null,4))
+    console.log(JSON.stringify(consulta_1, null,4))
 
     const consulta_2 = await userController.findUserAll()
     //console.log(JSON.stringify(consulta_2, null,3))
 
     const consulta_3 = await userController.updateUserById(3,{lastName: 'asdasd'})
-    console.log(await userController.findUserById(3))
+    //console.log(await userController.findUserById(3))
+
+    const consulta_4 = await userController.deleteUserById(3)
+}
+
+const consultasBootcamp = async () =>{
+    const consultaUno = await bootcampController.findById(1)
+    //console.log(JSON.stringify(consultaUno, null,3))
+
+    const consultaDos = await bootcampController.findAll()
+    console.log(JSON.stringify(consultaDos, null,3))
 }
 
 db.conexion.sync().then(() =>{
@@ -43,6 +53,7 @@ db.conexion.sync().then(() =>{
     //crearMatricula()
 
     consultasUser()
+    //consultasBootcamp()
 
     console.log('asd')
 })

@@ -2,7 +2,6 @@ const db = require('./../models/index.js')
 const User = db.user
 const Bootcamp = db.bootcamp
 
-
 /* createUser */
 exports.createUser = async (usuario) =>{
     try{
@@ -34,6 +33,7 @@ exports.findUserById = async (idUsuario) =>{
     })
     return usuarioBootcamp
 }
+
 /* findAll */
 exports.findUserAll = async () =>{
     const usuarioBootcamp = await User.findAll({
@@ -49,6 +49,7 @@ exports.findUserAll = async () =>{
     })
     return usuarioBootcamp
 }
+
 /* updateUserById */
 exports.updateUserById = async (idUsuario,updUsuario) =>{
     const usuarioBuscado = await User.findByPk(idUsuario)
@@ -56,8 +57,17 @@ exports.updateUserById = async (idUsuario,updUsuario) =>{
         console.log(`El Usuario ${usuarioBuscado} no encontrado`)
         return null
     }
-
     await User.update(updUsuario,{where: {id: idUsuario}})
+}
+
+/* deleteUserById */
+exports.deleteUserById = async (idUsuario) =>{
+    const usuarioBuscado = await User.findByPk(idUsuario)
+    if(!usuarioBuscado){
+        console.log(`El Usuario ${usuarioBuscado} no encontrado`)
+        return null
+    }
+    await usuarioBuscado.destroy()
 }
 
 /*
@@ -66,5 +76,4 @@ exports.updateUserById = async (idUsuario,updUsuario) =>{
 • Obtener todos los Usuarios incluyendo, los Bootcamp llamado findAll.
 • Actualizar usuario por Id llamado updateUserById.
 • Eliminar un usuario por Id llamado deleteUserById.
-
 */
