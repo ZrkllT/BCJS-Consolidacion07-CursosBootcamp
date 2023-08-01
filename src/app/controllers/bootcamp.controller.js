@@ -20,7 +20,7 @@ exports.createBootcamp = async (curso) =>{
 exports.findById = async (idBootcamp) =>{
     const BootcampBuscado = await Bootcamp.findByPk(idBootcamp)
     if(!BootcampBuscado){
-        console.log(`El Bootcamp ID: ${idBootcamp} no fue encontrado`)
+        return null
     }
 
     const BootcampUsuario = await Bootcamp.findByPk(idBootcamp, {
@@ -40,11 +40,6 @@ exports.findById = async (idBootcamp) =>{
 
 /* buscar todos los Bootcamp + Usuarios */
 exports.findAll = async () =>{
-    const BootcampBuscado = await Bootcamp.findAll()
-    if(!BootcampBuscado){
-        console.log(`El Bootcamp ID: ${idBootcamp} no fue encontrado`)
-    }
-
     const BootcampUsuario = await Bootcamp.findAll({
         attributes: ['title','cue','description'],
         //attributes: { exclude: ['createdAt', 'updatedAt'] },

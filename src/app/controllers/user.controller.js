@@ -17,7 +17,6 @@ exports.createUser = async (usuario) =>{
 exports.findUserById = async (idUsuario) =>{
     const usuarioBuscado = await User.findByPk(idUsuario)
     if(!usuarioBuscado){
-        console.log(`El Usuario ${usuarioBuscado} no encontrado`)
         return null
     }
 
@@ -55,7 +54,6 @@ exports.findUserAll = async () =>{
 exports.updateUserById = async (idUsuario,updUsuario) =>{
     const usuarioBuscado = await User.findByPk(idUsuario)
     if(!usuarioBuscado){
-        console.log(`El Usuario ${usuarioBuscado} no encontrado`)
         return null
     }
     await User.update(updUsuario,{where: {id: idUsuario}})
@@ -65,7 +63,6 @@ exports.updateUserById = async (idUsuario,updUsuario) =>{
 exports.deleteUserById = async (idUsuario) =>{
     const usuarioBuscado = await User.findByPk(idUsuario)
     if(!usuarioBuscado){
-        console.log(`El Usuario ${usuarioBuscado} no encontrado`)
         return null
     }
     await usuarioBuscado.destroy()

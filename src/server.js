@@ -30,30 +30,34 @@ const crearMatricula = async () =>{
 
 /* consultas */
 const consultarUserId = async (idUsuario) =>{
-    const resultado = await userController.findUserById(idUsuario)
+    let resultado = await userController.findUserById(idUsuario)
+    if(resultado == null){ resultado = 'Usuario No Encontrado' }
     console.log(JSON.stringify(resultado,null,3))
 }
 const consultarUsers = async () =>{
-    const resultado = await userController.findUserAll()
+    let resultado = await userController.findUserAll()
     console.log(JSON.stringify(resultado,null,3))
 }
 const updUser = async (idUsuario,DatosUpd) =>{
-    const resultado = await userController.updateUserById(idUsuario,DatosUpd)
-    const resUpd = await userController.findUserById(idUsuario)
+    let resultado = await userController.updateUserById(idUsuario,DatosUpd)
+    let resUpd = await userController.findUserById(idUsuario)
+    if(resUpd == null){ resUpd = 'Usuario No Encontrado' }
     console.log(JSON.stringify(resUpd,null,3))
 }
 const delUser = async (idUsuario) =>{
-    const resultado = await userController.deleteUserById(idUsuario)
-    const resDel = await userController.findUserAll()
+    let resultado = await userController.deleteUserById(idUsuario)
+    if(resultado == null){ resultado = 'Usuario No Encontrado' }
+    let resDel = await userController.findUserAll()
     console.log(JSON.stringify(resDel,null,3))
 }
 
 const consultarBootcampId = async (idBootcamp) =>{
-    const resultado = await bootcampController.findById(idBootcamp)
+    let resultado = await bootcampController.findById(idBootcamp)
+    if(resultado == null){ resultado = 'Bootcamp No Encontrado' }
     console.log(JSON.stringify(resultado, null,3))
 }
 const consultarBootcamps = async () =>{
-    const resultado = await bootcampController.findAll()
+    let resultado = await bootcampController.findAll()
     console.log(JSON.stringify(resultado, null,3))
 }
 
